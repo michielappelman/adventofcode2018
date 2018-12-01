@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func StarOne(input []string) int {
+func StarOne(input []string) string {
 	startingFrequency := 0
 	for _, a := range input {
 		if a[0] == 43 {
@@ -18,10 +18,10 @@ func StarOne(input []string) int {
 			startingFrequency = startingFrequency - digit
 		}
 	}
-	return startingFrequency
+	return strconv.Itoa(startingFrequency)
 }
 
-func StarTwo(input []string) int {
+func StarTwo(input []string) string {
 	startingFrequency := 0
 	seen := make(map[int]struct{})
 	seen[startingFrequency] = struct{}{}
@@ -31,14 +31,14 @@ func StarTwo(input []string) int {
 				digit, _ := strconv.Atoi(string(a[1:]))
 				startingFrequency = startingFrequency + digit
 				if _, ok := seen[startingFrequency]; ok {
-					return startingFrequency
+					return strconv.Itoa(startingFrequency)
 				}
 				seen[startingFrequency] = struct{}{}
 			} else {
 				digit, _ := strconv.Atoi(string(a[1:]))
 				startingFrequency = startingFrequency - digit
 				if _, ok := seen[startingFrequency]; ok {
-					return startingFrequency
+					return strconv.Itoa(startingFrequency)
 				}
 				seen[startingFrequency] = struct{}{}
 			}
