@@ -3,45 +3,36 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
+
+	"github.com/michielappelman/adventofcode2018/pkg/generic"
 )
 
 func StarOne(input []string) string {
-	startingFrequency := 0
-	for _, a := range input {
-		if a[0] == 43 {
-			digit, _ := strconv.Atoi(string(a[1:]))
-			startingFrequency = startingFrequency + digit
-		} else {
-			digit, _ := strconv.Atoi(string(a[1:]))
-			startingFrequency = startingFrequency - digit
-		}
+	ints, err := generic.StringsToInts(input)
+	if err != nil {
+		log.Fatal("could not convert to ints")
 	}
-	return strconv.Itoa(startingFrequency)
+	return strconv.Itoa(generic.Sum(ints))
 }
 
 func StarTwo(input []string) string {
 	startingFrequency := 0
+	ints, err := generic.StringsToInts(input)
+	if err != nil {
+		log.Fatal("could not convert to ints")
+	}
 	seen := make(map[int]struct{})
 	seen[startingFrequency] = struct{}{}
 	for {
-		for _, a := range input {
-			if a[0] == 43 {
-				digit, _ := strconv.Atoi(string(a[1:]))
-				startingFrequency = startingFrequency + digit
-				if _, ok := seen[startingFrequency]; ok {
-					return strconv.Itoa(startingFrequency)
-				}
-				seen[startingFrequency] = struct{}{}
-			} else {
-				digit, _ := strconv.Atoi(string(a[1:]))
-				startingFrequency = startingFrequency - digit
-				if _, ok := seen[startingFrequency]; ok {
-					return strconv.Itoa(startingFrequency)
-				}
-				seen[startingFrequency] = struct{}{}
+		for _, a := range ints {
+			startingFrequency += a
+			if _, ok := seen[startingFrequency]; ok {
+				return strconv.Itoa(startingFrequency)
 			}
+			seen[startingFrequency] = struct{}{}
 		}
 	}
 }
