@@ -2,6 +2,16 @@ package generic
 
 import "strconv"
 
+// ContainsInt checks if an integer is in a slice of ints
+func ContainsInt(s []int, e int) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+
 // Sum takes a slice of ints and returns their total sum.
 func Sum(list []int) int {
 	var sum int

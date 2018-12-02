@@ -1,5 +1,5 @@
 # Ignore Advent of Code input files
-*input.txt
+input.txt
 
 # Binaries for programs and plugins
 *.exe
