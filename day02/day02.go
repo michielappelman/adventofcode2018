@@ -61,8 +61,6 @@ func StarTwo(input []string) string {
 			}
 		}
 	}
-
-	return input[0]
 }
 
 func main() {
