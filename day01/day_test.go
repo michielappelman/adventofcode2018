@@ -19,6 +19,9 @@ func TestSolutions(t *testing.T) {
 	dayOneTests := strings.Split(days[0], "\n===\n")
 	for i, test := range dayOneTests {
 		testDetails := strings.Split(test, "\n---\n")
+		if len(testDetails) == 1 {
+			continue
+		}
 		input := strings.Split(testDetails[0], "\n")
 		got := StarOne(input)
 		if got != testDetails[1] {
@@ -32,6 +35,9 @@ func TestSolutions(t *testing.T) {
 		dayTwoTests := strings.Split(days[1], "\n===\n")
 		for i, test := range dayTwoTests {
 			testDetails := strings.Split(test, "\n---\n")
+			if len(testDetails) == 1 {
+				continue
+			}
 			input := strings.Split(testDetails[0], "\n")
 			got := StarTwo(input)
 			if got != testDetails[1] {
