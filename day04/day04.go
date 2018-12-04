@@ -82,7 +82,7 @@ func StarOne(input []string) string {
 	sleepingGuards := make(map[GuardMinute]int)
 	logs := parseLogEntries(input)
 	for i, log := range logs {
-		if log.event != 2 {
+		if log.event != GuardAsleep {
 			continue
 		}
 		for m := log.time.Minute(); m < logs[i+1].time.Minute(); m++ {
