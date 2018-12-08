@@ -96,13 +96,12 @@ func StarTwo(input []string) string {
 
 	for len(been) != len(done) || len(next) > 0 {
 		for _, instr := range next {
-			for freeWorkers > 0 {
+			if freeWorkers > 0 {
 				if !strings.Contains(been, instr) {
 					been = fmt.Sprintf("%s%s", been, instr)
 				}
 				doneOn[second+getDuration(instr)] = fmt.Sprintf("%s%s", doneOn[second+getDuration(instr)], instr)
 				freeWorkers--
-				break
 			}
 		}
 		second++
