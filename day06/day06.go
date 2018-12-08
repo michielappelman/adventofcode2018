@@ -11,10 +11,10 @@ import (
 )
 
 const (
-	minX = -2000
-	maxX = 2000
-	minY = -2000
-	maxY = 2000
+	minX = -1000
+	maxX = 1000
+	minY = -1000
+	maxY = 1000
 )
 
 type Point struct {
@@ -57,7 +57,7 @@ func StarOne(input []string) string {
 
 	biggestFinite := 0
 	for _, area := range areas {
-		if area > 10000 {
+		if area > 5000 {
 			continue
 		}
 		if area > biggestFinite {
